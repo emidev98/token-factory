@@ -1,0 +1,30 @@
+{
+  "_global": {
+    "_base": {
+      "instantiation": {
+        "instantiateMsg": {
+          "stable_denom" : "uusd",
+          "token_contract_code_id" : 82
+        }
+      }
+    }
+  },
+  "mainnet": {
+    "_connection": {
+      "chainID": "columbus-5",
+      "URL": "https://lcd.terra.dev"
+    }
+  },
+  "testnet": {
+    "_connection": {
+      "chainID": "bombay-12",
+      "URL": "https://bombay-lcd.terra.dev"
+    }
+  },
+  "localterra": {
+    "_connection": {
+      "chainID": "localterra",
+      "URL": "http://localhost:3060"
+    }
+  }
+}
