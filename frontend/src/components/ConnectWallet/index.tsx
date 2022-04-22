@@ -1,6 +1,8 @@
-import { useWallet, WalletStatus } from '@terra-dev/use-wallet'
+import './ConnectWallet.scss';
+import { Button } from '@mui/material';
+import { useWallet, WalletStatus } from '@terra-money/wallet-provider';
 
-export const ConnectWallet = () => {
+export function ConnectWallet() {
   const {
     status,
     availableConnectTypes,
@@ -15,29 +17,23 @@ export const ConnectWallet = () => {
       {status === WalletStatus.WALLET_NOT_CONNECTED && (
         <>
           {availableInstallTypes.map((connectType) => (
-            <button
-              key={`install-${connectType}`}
-              onClick={() => install(connectType)}
-              type="button"
-            >
+            <Button key={`install-${connectType}`}
+              onClick={() => install(connectType)}>
               Install {connectType}
-            </button>
+            </Button>
           ))}
           {availableConnectTypes.map((connectType) => (
-            <button
-              key={`connect-${connectType}`}
-              onClick={() => connect(connectType)}
-              type="button"
-            >
+            <Button key={`connect-${connectType}`}
+              onClick={() => connect(connectType)}>
               Connect {connectType}
-            </button>
+            </Button>
           ))}
         </>
       )}
       {status === WalletStatus.WALLET_CONNECTED && (
-        <button onClick={() => disconnect()} type="button">
+        <Button onClick={() => disconnect()}>
           Disconnect
-        </button>
+        </Button>
       )}
     </div>
   )

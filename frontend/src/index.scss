@@ -1,0 +1,15 @@
+@use "@fontsource/metropolis";
+@import "./styles/styles.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Metropolis';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-color;
+}
+
+button {
+  text-transform: none !important;
+  
+}

@@ -1,0 +1,30 @@
+{
+  "localterra": {
+    "token-factory": {
+      "codeId": "88",
+      "contractAddresses": {
+        "default": "terra1ny00txf7fdnz9kpn5g5fkzztc6sm7fyh6vdgkg"
+      }
+    },
+    "cw20-factory-token": {
+      "codeId": "85",
+      "contractAddresses": {
+        "default": "terra1f0wkk2n2hnhcwsgp9tup055z34e4m2r4kq6h9s"
+      }
+    }
+  },
+  "testnet": {
+    "cw20-factory-token": {
+      "codeId": "64942",
+      "contractAddresses": {
+        "default": "terra1r3qwa66k0mny8395q9c4m6vnk9ayp7m8vwqknl"
+      }
+    },
+    "token-factory": {
+      "codeId": "65376",
+      "contractAddresses": {
+        "default": "terra1r64hfs34g6w60jh60zfq2824ttsmqrvppksefa"
+      }
+    }
+  }
+}

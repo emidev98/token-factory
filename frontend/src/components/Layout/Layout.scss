@@ -1,0 +1,74 @@
+@import '../../styles/styles.scss';
+
+.AppLayout {
+    display: flex;
+    height: 100vh;
+
+    .AppNavbar {
+        max-width: 220px;
+        background: $navbar-background-color;
+        border-right: $app-border;
+
+        .NavbarList {
+            padding-top: 0;
+
+            .NavLink {
+                color: inherit;
+                text-decoration: none;
+
+            }
+
+            .AppLogo {
+                display: flex;
+                color: $logo-color;
+                border-bottom: $app-border;
+                min-width: 220px;
+                min-height: 65px;
+                margin-bottom: 1em;
+
+                .AppIcon {
+                    margin-right: .75em;
+                }
+            }
+
+            .NavItem {
+                display: block;
+
+                .NavButton {
+                    padding: .75em 1em;
+                    
+                    .NavIcon {
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+        }
+    }
+
+    .AppBody {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .AppHeader {            
+            display: flex;
+            flex-direction: row-reverse;
+            border-bottom: $app-border;
+            height: min-content;
+        
+        }
+
+        .AppContent {
+            display: flex;
+            flex-grow: 1;
+            padding: 32px 64px;
+
+            > :first-child {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                
+            }
+        }
+    }
+}

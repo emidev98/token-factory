@@ -1,0 +1,18 @@
+@import '../../styles/styles.scss';
+
+.ConnectWalletButton {
+
+    #ConnectWalletButtonMenu {
+        color: white;
+        border: $app-border;
+
+        svg {
+            margin-right: 0.5em;
+        }
+
+    }
+
+    #ConnectWalletOptions {
+
+    }
+}
