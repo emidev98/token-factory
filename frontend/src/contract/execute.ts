@@ -1,7 +1,7 @@
 import { LCDClient, MsgExecuteContract, Coin } from "@terra-money/terra.js";
 import { ConnectedWallet } from "@terra-money/wallet-provider";
 import { Address } from "../models/address";
-import { Token } from "../models/token";
+import { Token, TokenUtils } from "../models/token";
 import { factoryAddress } from "./address";
 
 // ==== utils ====
@@ -61,6 +61,7 @@ export const mintToken = async (tokenAddress: Address, wallet: ConnectedWallet) 
 }
 
 export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
+  console.log(JSON.stringify(token))
   const executeMsg = [
     new MsgExecuteContract(
       wallet.walletAddress,
@@ -70,7 +71,7 @@ export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
           instantiate: token
         }
       },
-      [new Coin("uusd", 100000)]
+      [new Coin("uusd", TokenUtils.getTotalInitialBalances(token))]
     )
   ]
   return _exec(executeMsg)(wallet);

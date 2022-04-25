@@ -1,50 +1,91 @@
 import { AccAddress } from "@terra-money/terra.js"
 
 export interface Token {
-    name: String,
-    symbol: String,
-    decimals: Number,
+    name: string,
+    symbol: string,
+    decimals: number,
     initial_balances: Array<InitialBalances>,
     mint?: Mint,
     marketing?: MarketingInfo;
 }
 
 export interface InitialBalances {
-    amount: String,
+    amount: string,
     address: AccAddress
 }
 
 export interface Mint {
-    minter: AccAddress,
-    cap: String
+    minter: AccAddress | null,
+    cap: string
 }
 
 export interface MarketingInfo {
-    project?: String,
-    description?: String,
-    marketing?: String,
+    project?: string,
+    description?: string,
+    marketing?: string,
     logo?: MarketingLogo,
 }
 
 export interface MarketingLogo {
-    url: String,
-    embedded: String
+    url: string,
+    embedded?: string
 }
 
 export class TokenUtils {
     static fromTokenData = (tokenData : TokenData) : Token => {
         const clonedTokenData = Object.assign({}, tokenData);
-        
-        return {
+        let token : Token = {
             name: clonedTokenData.name,
             symbol: clonedTokenData.symbol,
-            decimals: clonedTokenData.decimals,
-            initial_balances: clonedTokenData.initial_balances,
+            decimals: Number(clonedTokenData.decimals),
+            initial_balances: clonedTokenData.initial_balances.map((ib) => {
+                let amount = Number(ib.amount)**Number(clonedTokenData.decimals);
+                ib.amount = amount.toString();
+                return ib;
+            }),
             mint: {
-                minter: tokenData.minter,
-                cap: tokenData.cap.toString()
+                minter: "null",
+                cap: TokenUtils.getCap(clonedTokenData)
             }
-        };
+        }
+        
+        if(clonedTokenData.project) {
+            token.marketing = {
+                project : clonedTokenData.project
+            }
+        }
+
+        if(clonedTokenData.description) {
+            token.marketing = {
+                ...token.marketing,
+                description : clonedTokenData.description
+            }
+        }
+        
+        if(clonedTokenData.logo) {
+            token.marketing = {
+                ...token.marketing,
+                logo: {
+                    url : clonedTokenData.logo
+                }
+            }
+        }
+        return token;
+    }
+
+    static getTotalInitialBalances = (token: Token): number => {
+        let initialBalance = 0;
+
+        token.initial_balances.forEach(ib => {
+            initialBalance = initialBalance + Number(ib.amount);
+        });
+
+        return initialBalance;
+    }
+
+    static getCap = (tokenData : TokenData): string => {
+        let cap = Number(tokenData.cap) ** Number(tokenData.decimals);
+        return cap.toString();
     }
 }
 
@@ -52,8 +93,10 @@ export interface TokenData {
     name: string;
     symbol: string;
     decimals: number;
-    amount: string;
     initial_balances: Array<InitialBalances>;
     minter: string;
     cap: number;
+    project: string,
+    description: string,
+    logo: string,
 }

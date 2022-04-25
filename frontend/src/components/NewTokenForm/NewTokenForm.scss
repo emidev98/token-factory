@@ -1,0 +1,41 @@
+@import '../../styles/styles.scss';
+
+.NewTokenForm {
+    
+    .CardContent {
+
+        #description {
+            min-height: 119px;
+            
+        }
+
+        .InitialBalanceRemoveItem{
+            display: flex;
+            align-items: flex-end;
+
+            button {
+                color: $text-color;
+                background-color: transparent;
+            }
+        }
+        
+        .IncreaseInitialBalanceAction {
+            margin-top: 2em;
+
+        }    
+    }
+
+    .SubHeaderTitle {
+        padding: 0 2em;
+    }
+
+    .CardActions {
+        justify-content: space-between;
+        margin-top: 1em;
+
+        .SubmitActionButton {
+            min-width: 200px;
+            
+        }
+    }
+}

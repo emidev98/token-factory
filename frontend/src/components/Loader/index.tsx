@@ -6,7 +6,7 @@ interface Props {
 }
 
 function Loader(props: Props) {
-    const position =  props.position ? props.position : "relative";
+    const position =  props.position ? props.position : "absolute";
     const { status } = useWallet()
 
     return (

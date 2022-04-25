@@ -5,12 +5,28 @@ export interface MintedTokensResponse {
 }
 
 export interface BalanceResponse {
-    balance: String
+    balance: string
 }
 
 export interface TokenInfoResponse {
-    name: String,
-    symbol: String,
-    decimals: Number,
-    total_supply: Number
+    name: string,
+    symbol: string,
+    decimals: number,
+    total_supply: number
+}
+
+export interface MarketingResponse {
+    description?: string,
+    logo?: { url?: string},
+    project?: string,
+}
+
+export interface TokenData {
+    name?: string,
+    symbol?: string,
+    decimals?: number,
+    total_supply?: number,
+    description?: string,
+    logo?: { url?: string},
+    project?: string,
 }

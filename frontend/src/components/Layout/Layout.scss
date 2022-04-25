@@ -7,7 +7,7 @@
     .AppNavbar {
         max-width: 220px;
         background: $navbar-background-color;
-        border-right: $app-border;
+        border-right: $default-border;
 
         .NavbarList {
             padding-top: 0;
@@ -21,7 +21,7 @@
             .AppLogo {
                 display: flex;
                 color: $logo-color;
-                border-bottom: $app-border;
+                border-bottom: $default-border;
                 min-width: 220px;
                 min-height: 65px;
                 margin-bottom: 1em;
@@ -49,24 +49,28 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-
+        overflow: auto;
+        
         .AppHeader {            
             display: flex;
             flex-direction: row-reverse;
-            border-bottom: $app-border;
+            border-bottom: $default-border;
             height: min-content;
         
         }
 
         .AppContent {
             display: flex;
+            justify-content: center;
             flex-grow: 1;
             padding: 32px 64px;
-
+            position: relative;
+            
             > :first-child {
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
+                max-width: 1600px;
                 
             }
         }

@@ -4,15 +4,11 @@
 
     #ConnectWalletButtonMenu {
         color: white;
-        border: $app-border;
+        background-color: transparent;
 
         svg {
             margin-right: 0.5em;
         }
-
-    }
-
-    #ConnectWalletOptions {
 
     }
 }

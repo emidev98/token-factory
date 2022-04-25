@@ -9,7 +9,19 @@ body {
   color: $text-color;
 }
 
-button {
+button.MuiButton-root{
   text-transform: none !important;
-  
+  border: $default-border !important;
+  background-color: $button-background-color;
+  min-width: 42px;
+}
+
+div.MuiCardHeader-root,
+div.MuiCardContent-root,
+div.MuiCardActions-root{
+  padding: 20px 32px;
+}
+
+.SubHeaderTitle {
+  font-weight: 400;
 }
