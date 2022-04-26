@@ -14,6 +14,7 @@ type Props = {
 function NewTokenForm(props: Props) {
     const connectedWallet = useConnectedWallet();
     const [tokenData, setTokenData] = useState({
+        decimals: 6,
         initial_balances: Array(1).fill({
             address: "",
             amount: ""
@@ -78,7 +79,15 @@ function NewTokenForm(props: Props) {
 
     return (
         <Card className="NewTokenForm">
-            <CardHeader title="Create a token" />
+            <CardHeader title="Create token" 
+                action={
+                <Button className="SubmitActionButton"
+                    variant="contained"
+                    startIcon={<Add />}
+                    onClick={submitCreateToken}
+                    disableRipple>Create token</Button>
+                }
+            />
             <CardContent className="CardContent">
                 <Grid container
                     spacing={6}
@@ -93,7 +102,7 @@ function NewTokenForm(props: Props) {
                             variant="standard"
                             defaultValue={tokenData.name} />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={4}>
                         <TextField fullWidth
                             id="symbol"
                             type="text"
@@ -103,13 +112,14 @@ function NewTokenForm(props: Props) {
                             variant="standard"
                             defaultValue={tokenData.symbol} />
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={2}>
                         <TextField fullWidth
                             id="decimals"
                             type="number"
                             label="Decimals"
                             onChange={(event) => onValueChange(event)}
                             required
+                            disabled
                             variant="standard"
                             defaultValue={tokenData.decimals} />
                     </Grid>
@@ -153,7 +163,14 @@ function NewTokenForm(props: Props) {
                             defaultValue={tokenData.logo} />
                     </Grid>
                 </Grid>
-                <h3 className="SubHeaderTitle">Initial balance distribution</h3>
+                <div className="InitialBalancesHeader">
+                    <h3 className="SubHeaderTitle">Initial distribution</h3>
+                    <Button className="IncreaseInitialBalanceAction"
+                        variant="contained"
+                        startIcon={<PersonAdd />}
+                        onClick={onIncreaseInitialBalance}
+                        disableRipple>New address</Button>
+                </div>
                 {tokenData.initial_balances.map((initialBalance, index) => (
                     <Grid container
                         spacing={4}
@@ -193,18 +210,6 @@ function NewTokenForm(props: Props) {
                     </Grid>
                 ))}
             </CardContent>
-            <CardActions className="CardActions">
-                <Button className="IncreaseInitialBalanceAction"
-                    variant="contained"
-                    startIcon={<PersonAdd />}
-                    onClick={onIncreaseInitialBalance}
-                    disableRipple>Add address to initial distribution</Button>
-                <Button className="SubmitActionButton"
-                    variant="contained"
-                    startIcon={<Add />}
-                    onClick={submitCreateToken}
-                    disableRipple>Create Token</Button>
-            </CardActions>
         </Card>
     )
 }

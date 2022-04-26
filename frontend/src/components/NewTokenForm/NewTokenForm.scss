@@ -1,7 +1,8 @@
 @import '../../styles/styles.scss';
 
-.NewTokenForm {
-    
+div.NewTokenForm {
+    overflow: auto;
+
     .CardContent {
 
         #description {
@@ -9,7 +10,13 @@
             
         }
 
-        .InitialBalanceRemoveItem{
+        .InitialBalancesHeader {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .InitialBalanceRemoveItem {
             display: flex;
             align-items: flex-end;
 
@@ -30,7 +37,7 @@
     }
 
     .CardActions {
-        justify-content: space-between;
+        justify-content: flex-end;
         margin-top: 1em;
 
         .SubmitActionButton {

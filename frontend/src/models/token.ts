@@ -39,7 +39,7 @@ export class TokenUtils {
             symbol: clonedTokenData.symbol,
             decimals: Number(clonedTokenData.decimals),
             initial_balances: clonedTokenData.initial_balances.map((ib) => {
-                let amount = Number(ib.amount)**Number(clonedTokenData.decimals);
+                let amount = Number(ib.amount) ** Number(clonedTokenData.decimals);
                 ib.amount = amount.toString();
                 return ib;
             }),
