@@ -14,35 +14,23 @@ div.NewTokenForm {
             display: flex;
             align-items: baseline;
             justify-content: space-between;
+            padding: 0 2em;
+
         }
 
-        .InitialBalanceRemoveItem {
-            display: flex;
-            align-items: flex-end;
+        .InitialBalance {
+            padding: 0 2em;
+            margin-bottom: 1em;
 
-            button {
-                color: $text-color;
-                background-color: transparent;
+            .InitialBalanceRemoveItem {
+                display: flex;
+                align-items: flex-end;
+    
+                button {
+                    color: $text-color;
+                    background-color: transparent;
+                }
             }
-        }
-        
-        .IncreaseInitialBalanceAction {
-            margin-top: 2em;
-
-        }    
-    }
-
-    .SubHeaderTitle {
-        padding: 0 2em;
-    }
-
-    .CardActions {
-        justify-content: flex-end;
-        margin-top: 1em;
-
-        .SubmitActionButton {
-            min-width: 200px;
-            
         }
     }
 }

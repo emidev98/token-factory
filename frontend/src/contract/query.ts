@@ -17,13 +17,16 @@ export const getTokenInfo = async (tokenAddress: Address, wallet: ConnectedWalle
     URL: wallet.network.lcd,
     chainID: wallet.network.chainID,
   });
-  let tokenData: TokenData = {};
+  let tokenData: TokenData = {
+    address: tokenAddress
+  };
 
   try {
     let queryTokenInfo: TokenInfoResponse = await lcd.wasm.contractQuery(tokenAddress, {
       token_info: {}
     });
     tokenData = {
+      ...tokenData,
       ...queryTokenInfo
     }
   }

@@ -1,0 +1,30 @@
+@import '../../styles/styles.scss';
+
+.TokensTable {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    
+    .TokenRow {
+        height: 100px;
+        transition: background-color 0.25s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .DescriptionTableCell {
+
+            >div {
+                max-height: 94px;
+                overflow: auto;
+            }
+        }
+    }
+    
+    .TokenPagination {
+        min-height: 64px;
+        overflow: visible;
+    }
+}

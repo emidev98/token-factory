@@ -61,7 +61,6 @@ export const mintToken = async (tokenAddress: Address, wallet: ConnectedWallet) 
 }
 
 export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
-  console.log(JSON.stringify(token))
   const executeMsg = [
     new MsgExecuteContract(
       wallet.walletAddress,

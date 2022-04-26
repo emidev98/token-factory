@@ -22,6 +22,7 @@ export interface MarketingResponse {
 }
 
 export interface TokenData {
+    address: Address,
     name?: string,
     symbol?: string,
     decimals?: number,

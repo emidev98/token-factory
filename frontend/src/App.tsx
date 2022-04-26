@@ -3,7 +3,7 @@ import Layout from './components/Layout';
 import { SnackbarProvider } from 'notistack';
 
 function App() {
-  const { menu, element: routes } = useNav();
+  const { routesList, menu, element: routes } = useNav();
 
   return (
     <div className="AppContainer">
@@ -12,7 +12,8 @@ function App() {
           vertical: 'top',
           horizontal: 'right'
         }}>
-        <Layout menu={menu}>
+        <Layout menu={menu}
+          routesList={routesList}>
           {routes}
         </Layout>
       </SnackbarProvider>

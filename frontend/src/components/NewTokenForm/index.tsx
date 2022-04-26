@@ -1,7 +1,7 @@
 import './NewTokenForm.scss';
 import { useEffect, useState } from 'react'
 import { Token, TokenData, TokenUtils } from './../../models/token';
-import { Button, Card, CardActions, CardContent, CardHeader, Grid, TextField } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Grid, TextField } from '@mui/material';
 import { Add, PersonAdd, PlaylistRemove } from '@mui/icons-material';
 import { factoryAddress } from '../../contract/address';
 import { useConnectedWallet } from '@terra-money/wallet-provider';
@@ -79,8 +79,7 @@ function NewTokenForm(props: Props) {
 
     return (
         <Card className="NewTokenForm">
-            <CardHeader title="Create token" 
-                action={
+            <CardHeader action={
                 <Button className="SubmitActionButton"
                     variant="contained"
                     startIcon={<Add />}
@@ -173,12 +172,10 @@ function NewTokenForm(props: Props) {
                 </div>
                 {tokenData.initial_balances.map((initialBalance, index) => (
                     <Grid container
-                        spacing={4}
-                        paddingLeft="2em"
-                        paddingRight="2em"
+                        className="InitialBalance"
+                        spacing={2}
                         key={index}>
-                        <Grid item
-                            xs={1}
+                        <Grid item xs={1}
                             className="InitialBalanceRemoveItem">
                                 {index !== 0 && 
                                     <Button disableRipple
@@ -187,7 +184,7 @@ function NewTokenForm(props: Props) {
                                     </Button>
                                 }
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item xs={9}>
                             <TextField fullWidth
                                 id="address"
                                 type="text"
@@ -197,7 +194,7 @@ function NewTokenForm(props: Props) {
                                 defaultValue={initialBalance.address}
                                 required/>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={2}>
                             <TextField fullWidth
                                 id="amount"
                                 type="number"
