@@ -12,7 +12,7 @@ export interface TokenInfoResponse {
     name: string,
     symbol: string,
     decimals: number,
-    total_supply: number
+    total_supply: string
 }
 
 export interface MarketingResponse {
@@ -21,13 +21,29 @@ export interface MarketingResponse {
     project?: string,
 }
 
+export interface MinterResponse {
+    minter: string,
+    cap?: string
+}
+
+export interface AllAccountsResponse {
+    accounts: Array<Address>
+}
+
 export interface TokenData {
-    address: Address,
+    address?: Address,
     name?: string,
     symbol?: string,
     decimals?: number,
-    total_supply?: number,
+    total_supply?: string | number,
+    marketing?: string,
     description?: string,
+    cap?: string,
     logo?: { url?: string},
     project?: string,
+}
+
+export interface TokenHolder {
+    address: Address, 
+    balance: number
 }

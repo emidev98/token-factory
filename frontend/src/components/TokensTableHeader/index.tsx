@@ -11,6 +11,7 @@ export interface HeaderData {
     symbol: string;
     name: string;
     total_supply: string;
+    decimals: string;
     description: string;
 }
 

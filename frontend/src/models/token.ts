@@ -39,13 +39,13 @@ export class TokenUtils {
             symbol: clonedTokenData.symbol,
             decimals: Number(clonedTokenData.decimals),
             initial_balances: clonedTokenData.initial_balances.map((ib) => {
-                let amount = Number(ib.amount) ** Number(clonedTokenData.decimals);
+                let amount = Number(ib.amount) * (10 ** Number(clonedTokenData.decimals));
                 ib.amount = amount.toString();
                 return ib;
             }),
             mint: {
                 minter: "null",
-                cap: TokenUtils.getCap(clonedTokenData)
+                cap: (Number(clonedTokenData.cap) * (10 ** Number(clonedTokenData.decimals))).toString()
             }
         }
         
@@ -73,7 +73,7 @@ export class TokenUtils {
         return token;
     }
 
-    static getTotalInitialBalances = (token: Token): number => {
+    static getInitialBalance = (token: Token): number => {
         let initialBalance = 0;
 
         token.initial_balances.forEach(ib => {
@@ -81,11 +81,6 @@ export class TokenUtils {
         });
 
         return initialBalance;
-    }
-
-    static getCap = (tokenData : TokenData): string => {
-        let cap = Number(tokenData.cap) ** Number(tokenData.decimals);
-        return cap.toString();
     }
 }
 

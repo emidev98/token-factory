@@ -9,6 +9,7 @@ import { factoryAddress } from "./address";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const until = Date.now() + 1000 * 60 * 60;
 const untilInterval = Date.now() + 1000 * 60;
+const DECIMALS = 6;
 
 const _exec =
   (msgs: any) =>
@@ -40,7 +41,11 @@ const _exec =
     };
 
 // ==== execute contract ====
-export const mintToken = async (tokenAddress: Address, wallet: ConnectedWallet) => {
+export const mintToken = async (
+  tokenAddress: Address,
+  amount: String,
+  wallet: ConnectedWallet
+) => {
   const executeMsg = [
     new MsgExecuteContract(
       wallet.walletAddress,
@@ -54,7 +59,7 @@ export const mintToken = async (tokenAddress: Address, wallet: ConnectedWallet) 
           }
         }
       },
-      [new Coin("uusd", 100000)]
+      [new Coin("uusd", (Number(amount) * (10 ** DECIMALS)).toString())]
     )
   ]
   return _exec(executeMsg)(wallet);
@@ -70,13 +75,17 @@ export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
           instantiate: token
         }
       },
-      [new Coin("uusd", TokenUtils.getTotalInitialBalances(token))]
+      [new Coin("uusd", TokenUtils.getInitialBalance(token))]
     )
   ]
   return _exec(executeMsg)(wallet);
 }
 
-export const burnToken = async (tokenAddress: Address, amount: String, wallet: ConnectedWallet) => {
+export const burnToken = async (
+  tokenAddress: Address,
+  amount: String,
+  wallet: ConnectedWallet
+) => {
   const executeMsg = [
     new MsgExecuteContract(
       wallet.walletAddress,
@@ -84,7 +93,7 @@ export const burnToken = async (tokenAddress: Address, amount: String, wallet: C
       {
         increase_allowance: {
           spender: factoryAddress(wallet),
-          amount: amount
+          amount: (Number(amount) * 10 ** DECIMALS).toString()
         }
       }
     ),
@@ -92,9 +101,9 @@ export const burnToken = async (tokenAddress: Address, amount: String, wallet: C
       wallet.walletAddress,
       factoryAddress(wallet),
       {
-        burn : {
+        burn: {
           token_address: tokenAddress,
-          amount: amount
+          amount: (Number(amount) * 10 ** DECIMALS).toString()
         }
       }
     ),
@@ -104,7 +113,7 @@ export const burnToken = async (tokenAddress: Address, amount: String, wallet: C
       {
         decrease_allowance: {
           spender: factoryAddress(wallet),
-          amount: amount
+          amount: (Number(amount) * 10 ** DECIMALS).toString()
         }
       }
     )

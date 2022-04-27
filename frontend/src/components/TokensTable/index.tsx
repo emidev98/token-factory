@@ -113,16 +113,18 @@ function TokensTable(props: Props) {
                                 key={index}
                                 onClick={() => props.onRowClick(token.address as any)}>
                                 <TableCell style={{ "width": "50px" }}>
-                                    {(token.logo as any)?.url && 
-                                        <img src={((token.logo as any)?.url)} 
+                                    {(token.logo as any)?.url &&
+                                        <img src={((token.logo as any)?.url)}
                                             alt="logo"
                                             style={{ maxWidth: "48px", maxHeight: "48px" }} />
                                     }
-                                    
+
                                 </TableCell>
                                 <TableCell style={{ "width": "100px" }}>{token.symbol}</TableCell>
                                 <TableCell style={{ "width": "100px" }}>{token.name}</TableCell>
-                                <TableCell>{token.total_supply}</TableCell>
+                                <TableCell>{token.total_supply &&
+                                    <span>{(Number(token.total_supply) / (10 ** Number(token.decimals)))}</span>
+                                }</TableCell>
                                 <TableCell className="DescriptionTableCell">
                                     <div>{token.description}</div>
                                 </TableCell>
