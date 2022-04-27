@@ -5,8 +5,11 @@ import { useState } from 'react';
 import './ConnectWalletButton.scss';
 import AddressComponent from './../AddressComponent';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import { useSnackbar } from 'notistack';
 
 function ConnectWalletButton() {
+    const { enqueueSnackbar } = useSnackbar();
     const {
         availableConnectTypes,
         availableInstallTypes,
@@ -19,8 +22,7 @@ function ConnectWalletButton() {
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        if (connectedWallet) disconnect()
-        else setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     };
 
     const handleConnect = (option: ConnectType) => {
@@ -33,6 +35,19 @@ function ConnectWalletButton() {
         setAnchorEl(null);
     };
 
+    const onCopyAddress = () => {
+        if (connectedWallet) {
+            navigator.clipboard.writeText(connectedWallet.terraAddress);
+            enqueueSnackbar(`Address copied successfully`, { variant: "success" });
+            setAnchorEl(null);
+        }
+    }
+
+    const onDisconnectWallet = () => {
+        disconnect();
+        setAnchorEl(null);
+    }
+
     return (
         <div className="ConnectWalletButton">
             <Button id="ConnectWalletButtonMenu"
@@ -42,33 +57,44 @@ function ConnectWalletButton() {
                 disableRipple
                 onClick={handleClick}>
                 {connectedWallet && <>
-                        <AccountBalanceWalletIcon fontSize="inherit" />
-                        <AddressComponent maxWidth='120px' address={connectedWallet.terraAddress}/>
-                    </>
+                    <AccountBalanceWalletIcon fontSize="inherit" />
+                    <AddressComponent maxWidth='120px' address={connectedWallet.terraAddress} />
+                </>
                 }
                 <span>{!connectedWallet && "Connect"}</span>
             </Button>
 
             <Menu id="ConnectWalletOptions"
-                MenuListProps={{
-                    'aria-labelledby': 'ConnectWalletButtonMenu',
-                }}
+                MenuListProps={{ 'aria-labelledby': 'ConnectWalletButtonMenu' }}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={() => setAnchorEl(null)}>
-                {availableInstallTypes.map((option) => (
+                {!connectedWallet && availableConnectTypes.map((option) => (
+                    <MenuItem key={option}
+                        onClick={() => handleConnect(option)}>
+                        {option}
+                    </MenuItem>
+                ))}
+
+
+                {!connectedWallet && availableInstallTypes.map((option) => (
                     <MenuItem key={option}
                         onClick={() => handleInstall(option)}>
                         {option}
                     </MenuItem>
                 ))}
 
-                {availableConnectTypes.map((option) => (
-                    <MenuItem key={option}
-                        onClick={() => handleConnect(option)}>
-                        {option}
+                {connectedWallet && [
+                    <MenuItem key="random1" onClick={() => onCopyAddress()}>
+                        <span className="CopyEntry">
+                            <ContentCopyIcon />
+                            <span>Copy Address</span>
+                        </span>
+                    </MenuItem>,
+                    <MenuItem key="random2" onClick={() => onDisconnectWallet()}>
+                        Disconnect
                     </MenuItem>
-                ))}
+                ]}
             </Menu>
         </div>
     );

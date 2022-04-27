@@ -1,7 +1,7 @@
 import "./TokensTable.scss";
 import { useState } from 'react'
 import { TokenData } from '../../models/query';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TablePagination, TableRow } from '@mui/material';
 import { Address } from "../../models/address";
 import TokensTableHeader, { Order, HeaderData, HeadCell } from "./../TokensTableHeader";
 
@@ -113,7 +113,12 @@ function TokensTable(props: Props) {
                                 key={index}
                                 onClick={() => props.onRowClick(token.address as any)}>
                                 <TableCell style={{ "width": "50px" }}>
-                                    <img src={((token.logo as any)?.url )} style={{ maxWidth: "48px", maxHeight: "48px" }} />
+                                    {(token.logo as any)?.url && 
+                                        <img src={((token.logo as any)?.url)} 
+                                            alt="logo"
+                                            style={{ maxWidth: "48px", maxHeight: "48px" }} />
+                                    }
+                                    
                                 </TableCell>
                                 <TableCell style={{ "width": "100px" }}>{token.symbol}</TableCell>
                                 <TableCell style={{ "width": "100px" }}>{token.name}</TableCell>

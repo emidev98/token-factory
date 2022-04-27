@@ -1,7 +1,7 @@
 import "./Layout.scss";
 import TokenIcon from '@mui/icons-material/Token';
 import { AppBar, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material'
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import ConnectWalletButton from '../ConnectWalletButton';
 import { useEffect, useState } from "react";
 
