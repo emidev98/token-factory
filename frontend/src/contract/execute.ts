@@ -43,7 +43,7 @@ const _exec =
 // ==== execute contract ====
 export const mintToken = async (
   tokenAddress: Address,
-  amount: String,
+  amount: string,
   wallet: ConnectedWallet
 ) => {
   const executeMsg = [
@@ -83,7 +83,7 @@ export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
 
 export const burnToken = async (
   tokenAddress: Address,
-  amount: String,
+  amount: string,
   wallet: ConnectedWallet
 ) => {
   const executeMsg = [

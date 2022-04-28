@@ -2,7 +2,6 @@ import * as query from '../contract/query';
 import { useEffect, useState } from 'react'
 import { ConnectedWallet, useConnectedWallet, useWallet, WalletStatus } from '@terra-money/wallet-provider';
 import { TokenData } from '../models/query';
-import Loader from './../components/Loader';
 import TokensTable from './../components/TokensTable';
 import { Address } from '../models/address';
 import { useNavigate } from 'react-router-dom';
@@ -46,8 +45,8 @@ function Tokens() {
 
     return (
         <div className="Tokens">
-            {loading && <Loader />}
             <TokensTable tokens={tokens}
+                loading={loading}
                 onRowClick={onRowClick} />
         </div>
     )

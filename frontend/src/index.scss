@@ -18,8 +18,17 @@ button.MuiButton-root{
 
 div.MuiCardHeader-root,
 div.MuiCardContent-root,
-div.MuiCardActions-root{
+div.MuiCardActions-root,
+div.MuiDialogActions-root,
+div.MuiDialogContent-root,
+h2.MuiDialogTitle-root {
   padding: 20px 32px;
+}
+
+
+h2.MuiDialogTitle-root {
+  font-weight: 400;
+
 }
 
 .SubHeaderTitle {

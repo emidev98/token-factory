@@ -4,9 +4,11 @@ import { TokenData } from '../../models/query';
 import { Paper, Table, TableBody, TableCell, TableContainer, TablePagination, TableRow } from '@mui/material';
 import { Address } from "../../models/address";
 import TokensTableHeader, { Order, HeaderData, HeadCell } from "./../TokensTableHeader";
+import Loader from "../Loader";
 
 type Props = {
     tokens: Array<TokenData>,
+    loading: boolean,
     onRowClick: (id: Address) => void;
 }
 const headCells: Array<HeadCell> = [
@@ -100,6 +102,8 @@ function TokensTable(props: Props) {
     return (
         <TableContainer className="TokensTable"
             component={Paper}>
+
+            {props.loading && <Loader />}
             <Table style={{ marginBottom: "auto" }}>
                 <TokensTableHeader
                     order={order}
