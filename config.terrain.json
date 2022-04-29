@@ -4,7 +4,7 @@
       "instantiation": {
         "instantiateMsg": {
           "stable_denom" : "uusd",
-          "token_contract_code_id" : 82
+          "token_contract_code_id" : 64942
         }
       }
     }

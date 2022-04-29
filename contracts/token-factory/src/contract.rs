@@ -266,9 +266,6 @@ pub fn execute_burn_from(
         .add_submessages(vec![sub_msg_burn, sub_msg_send]))
 }
 
-/* In order to handle any callback from previous SubMessages "reply"
-function must be implemented and iterate over "msg.id" to allow
-the completion of the callback.*/
 #[cfg_attr(not(feature = "library"), entry_point)]
 pub fn reply(deps: DepsMut, _env: Env, msg: Reply) -> StdResult<Response> {
     match msg.id {
