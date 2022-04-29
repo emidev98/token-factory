@@ -5,7 +5,7 @@ import { LibraryAdd } from "@mui/icons-material";
 /* PAGES */
 import Token from "./pages/Token";
 import Tokens from "./pages/Tokens";
-import Dashboard from "./pages/Dashboard";
+import Info from "./pages/Info";
 import CreateToken from "./pages/CreateToken";
 
 import NotFound from "./pages/NotFound";
@@ -29,8 +29,8 @@ export const useNav = () => {
     const routes = [
         {
             path: "/",
-            element: <Dashboard />,
-            title: "Dashboard"
+            element: <Info />,
+            title: ""
         },
         ...menu,
         {
