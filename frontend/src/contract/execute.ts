@@ -59,7 +59,7 @@ export const mintToken = async (
           }
         }
       },
-      [new Coin("uusd", (Number(amount) * (10 ** DECIMALS)).toString())]
+      [new Coin("uluna", (Number(amount) * (10 ** DECIMALS)).toString())]
     )
   ]
   return _exec(executeMsg)(wallet);
@@ -75,7 +75,7 @@ export const createNewToken = async (token: Token, wallet: ConnectedWallet) => {
           instantiate: token
         }
       },
-      [new Coin("uusd", TokenUtils.getInitialBalance(token))]
+      [new Coin("uluna", TokenUtils.getInitialBalance(token))]
     )
   ]
   return _exec(executeMsg)(wallet);

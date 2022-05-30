@@ -277,18 +277,18 @@ pub fn reply(deps: DepsMut, _env: Env, msg: Reply) -> StdResult<Response> {
 fn handle_instantiate_reply(deps: DepsMut, msg: Reply) -> StdResult<Response> {
     let result = msg.result.into_result().map_err(StdError::generic_err)?;
 
-    /* Find the event type instantiate_contract which contains the contract_address*/
+    /* Find the event type instantiate which contains the contract_address*/
     let event = result
         .events
         .iter()
-        .find(|event| event.ty == "instantiate_contract")
-        .ok_or_else(|| StdError::generic_err("cannot find `instantiate_contract` event"))?;
+        .find(|event| event.ty == "instantiate")
+        .ok_or_else(|| StdError::generic_err("cannot find `instantiate` event"))?;
 
-    /* Find the contract_address from instantiate_contract event*/
+    /* Find the contract_address from instantiate event*/
     let contract_address = &event
         .attributes
         .iter()
-        .find(|attr| attr.key == "contract_address")
+        .find(|attr| attr.key == "_contract_address")
         .ok_or_else(|| StdError::generic_err("cannot find `contract_address` attribute"))?
         .value;
 

@@ -3,7 +3,7 @@
     "_base": {
       "instantiation": {
         "instantiateMsg": {
-          "stable_denom": "uusd",
+          "stable_denom": "uluna",
           "token_contract_code_id": 143
         }
       }

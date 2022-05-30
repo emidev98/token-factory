@@ -117,7 +117,7 @@ mod tests {
         let info = mock_info(
             "creator",
             &vec![Coin {
-                denom: "uusd".to_string(),
+                denom: "uluna".to_string(),
                 amount: Uint128::new(1),
             }],
         );
@@ -184,7 +184,7 @@ mod tests {
                 })),
                 SubMsg::new(CosmosMsg::Bank(BankMsg::Send {
                     to_address: "creator".to_string(),
-                    amount: coins(123 as u128, "uusd")
+                    amount: coins(123 as u128, "uluna")
                 }))
             ],
             res.messages
@@ -197,7 +197,7 @@ mod tests {
 
     fn do_instantiate(deps: DepsMut) -> Response {
         let instantiate_msg = InstantiateMsg {
-            stable_denom: "uusd".to_string(),
+            stable_denom: "uluna".to_string(),
             token_contract_code_id: 1,
         };
         let info = mock_info("creator", &[]);
@@ -211,7 +211,7 @@ mod tests {
         let info = mock_info(
             "i_am_the_sender",
             &vec![Coin {
-                denom: "uusd".to_string(),
+                denom: "uluna".to_string(),
                 amount: Uint128::new(123),
             }],
         );
