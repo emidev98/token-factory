@@ -1,29 +1,15 @@
 {
-  "localterra": {
-    "token-factory": {
-      "codeId": "88",
-      "contractAddresses": {
-        "default": "terra1ny00txf7fdnz9kpn5g5fkzztc6sm7fyh6vdgkg"
-      }
-    },
-    "cw20-factory-token": {
-      "codeId": "85",
-      "contractAddresses": {
-        "default": "terra1f0wkk2n2hnhcwsgp9tup055z34e4m2r4kq6h9s"
-      }
-    }
-  },
   "testnet": {
     "cw20-factory-token": {
-      "codeId": "64942",
+      "codeId": "143",
       "contractAddresses": {
-        "default": "terra1r3qwa66k0mny8395q9c4m6vnk9ayp7m8vwqknl"
+        "default": "terra18rpdajsg423669qqhvx5yx46t75rrek2hzavqc8h5nxkspkfsfgs7k57ew"
       }
     },
     "token-factory": {
-      "codeId": "65376",
+      "codeId": "149",
       "contractAddresses": {
-        "default": "terra1r64hfs34g6w60jh60zfq2824ttsmqrvppksefa"
+        "default": "terra19d3fa4mk0e24qczf0zsksectlpafqa8feved2n9zkwal0r7r720serf0nf"
       }
     }
   }

@@ -8,14 +8,14 @@ mod tests {
         coins, from_binary,
         testing::{mock_dependencies, mock_env, mock_info},
         to_binary, Attribute, BankMsg, Coin, CosmosMsg, DepsMut, Event, Reply, Response, SubMsg,
-        SubMsgExecutionResponse, Uint128, WasmMsg,
+        SubMsgResponse, Uint128, WasmMsg,
     };
     use cw20::{Cw20Coin, MinterResponse};
 
     #[test]
     fn test_instantiate() {
         // GIVEN
-        let mut deps = mock_dependencies(&[]);
+        let mut deps = mock_dependencies();
 
         // WHEN
         let res = do_instantiate(deps.as_mut());
@@ -40,7 +40,7 @@ mod tests {
     #[test]
     fn test_mint_token() {
         // GIVEN
-        let mut deps = mock_dependencies(&[]);
+        let mut deps = mock_dependencies();
 
         // WHEN
         do_instantiate(deps.as_mut());
@@ -83,7 +83,7 @@ mod tests {
     #[test]
     fn test_reply_instantiate_event() {
         // GIVEN
-        let mut deps = mock_dependencies(&[]);
+        let mut deps = mock_dependencies();
         let env = mock_env();
         let query_minted_tokens = QueryMsg::GetMintedTokens {};
 
@@ -112,7 +112,7 @@ mod tests {
     #[test]
     fn test_mint_existent_token() {
         // GIVEN
-        let mut deps = mock_dependencies(&[]);
+        let mut deps = mock_dependencies();
         let env = mock_env();
         let info = mock_info(
             "creator",
@@ -152,7 +152,7 @@ mod tests {
     #[test]
     fn test_burn_tokens() {
         // GIVEN
-        let mut deps = mock_dependencies(&[]);
+        let mut deps = mock_dependencies();
         let env = mock_env();
         let info = mock_info("creator", &[]);
         let exec_burn_tokens = ExecuteMsg::Burn {
@@ -250,7 +250,7 @@ mod tests {
             env,
             Reply {
                 id: 1,
-                result: cosmwasm_std::ContractResult::Ok(SubMsgExecutionResponse {
+                result: cosmwasm_std::SubMsgResult::Ok(SubMsgResponse {
                     events: vec![event],
                     data: None,
                 }),
