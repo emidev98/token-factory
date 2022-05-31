@@ -32,7 +32,7 @@ function CreateToken() {
       const newTokenResponse = await execute.createNewToken(token, connectedWallet);
 
       if (newTokenResponse.logs) {
-        const tokenId = newTokenResponse?.logs[0].events[4].attributes[3].value;
+        const tokenId = newTokenResponse?.logs[0].events[3].attributes[0].value;
         enqueueSnackbar(`Token '${token.name}' successfully created`, {variant: "success"});
         navigate(`/tokens/${tokenId}`);
       }

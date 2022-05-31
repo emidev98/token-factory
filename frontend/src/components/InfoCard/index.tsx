@@ -8,13 +8,13 @@ function InfoCard() {
     return (
         <Card className="InfoCard">
             <CardContent>
-                <h2>CW20 Token Factory</h2>
+                <h2>CW20 Tokens Factory</h2>
                 <div className="InfoCardDivider"/>
                 <div>
                     <b>Create</b> a new token.<br/><br/>
                     <b>Mint</b> already existent tokens.<br/><br/>
                     <b>Burn</b> tokens. <br/><br/>
-                    Everything pegged 1:1 on UST
+                    Everything pegged 1:1 on LUNA
                 </div>
                 <h3 style={{
                     opacity: status === WalletStatus.WALLET_NOT_CONNECTED ? "1" : "0"

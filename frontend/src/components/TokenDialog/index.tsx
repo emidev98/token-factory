@@ -68,8 +68,8 @@ function TokenDialog(props: TokenProps) {
             </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    {type === "MINT" && `Per each unit of ${symbol} token you mint you will have to deposit 1 UST. Minted tokens will be send to the address below`}
-                    {type === "BURN" && `Per each unit of ${symbol} token you burn you will receive 1 UST back to your wallet.`}
+                    {type === "MINT" && `Per each unit of ${symbol} token you mint you will have to deposit 1 LUNA. Minted tokens will be send to the address below`}
+                    {type === "BURN" && `Per each unit of ${symbol} token you burn you will receive 1 LUNA back to your wallet.`}
                 </DialogContentText>
                 <Grid container
                     spacing={2}>

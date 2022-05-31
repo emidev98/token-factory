@@ -56,7 +56,7 @@ pub fn execute(
         a new token or to increase already existent tokens circulating supply */
         ExecuteMsg::Deposit(deposit_type) => match_deposit(deps.as_ref(), env, info, deposit_type),
         /* Method used to burn an existent token created thru this contract
-        and send the UST back to the address that burn these tokens.*/
+        and send the LUNA back to the address that burn these tokens.*/
         ExecuteMsg::Burn {
             amount,
             token_address,
@@ -79,7 +79,7 @@ pub fn match_deposit(
         }
         /* If a token_address and recipient is received along with a
         deposit this method will increase the supply of an already 
-        existent token by the defined units of UST received */
+        existent token by the defined units of LUNA received */
         DepositType::Mint {
             token_address,
             recipient,
@@ -191,7 +191,7 @@ pub fn execute_mint(
         .find(|t| t == &token_address);
 
     /* Check if the token to be minted exists in the list, otherwise
-    throw an error because minting must not be allowed for a token
+    throw an error because minting mLUNA not be allowed for a token
     that was not created with this factory */
     if token_addr_from_list == None {
         return Err(ContractError::TokenAddressMustBeWhitelisted {});
@@ -231,13 +231,13 @@ pub fn execute_burn_from(
         .find(|t| t == &token_address);
 
     /* Check if the token to be burned exists in the list, otherwise
-    throw an error because minting must not be allowed for a token
+    throw an error because minting mLUNA not be allowed for a token
     that was not created thru the factory */
     if token_addr_from_list == None {
         return Err(ContractError::TokenAddressMustBeWhitelisted {});
     }
 
-    /* Amount of tokens to be burned must not be zero */
+    /* Amount of tokens to be burned mLUNA not be zero */
     if amount.is_zero() {
         return Err(ContractError::NotAllowZeroAmount {});
     }
@@ -277,18 +277,18 @@ pub fn reply(deps: DepsMut, _env: Env, msg: Reply) -> StdResult<Response> {
 fn handle_instantiate_reply(deps: DepsMut, msg: Reply) -> StdResult<Response> {
     let result = msg.result.into_result().map_err(StdError::generic_err)?;
 
-    /* Find the event type instantiate_contract which contains the contract_address*/
+    /* Find the event type instantiate which contains the contract_address*/
     let event = result
         .events
         .iter()
-        .find(|event| event.ty == "instantiate_contract")
-        .ok_or_else(|| StdError::generic_err("cannot find `instantiate_contract` event"))?;
+        .find(|event| event.ty == "instantiate")
+        .ok_or_else(|| StdError::generic_err("cannot find `instantiate` event"))?;
 
-    /* Find the contract_address from instantiate_contract event*/
+    /* Find the contract_address from instantiate event*/
     let contract_address = &event
         .attributes
         .iter()
-        .find(|attr| attr.key == "contract_address")
+        .find(|attr| attr.key == "_contract_address")
         .ok_or_else(|| StdError::generic_err("cannot find `contract_address` attribute"))?
         .value;
 
