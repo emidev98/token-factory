@@ -64,18 +64,18 @@ function Token() {
                             data.amount.toString(), 
                             connectedWallet
                         );
-                        
+                        enqueueSnackbar(`Tokens ${dialogType?.toLowerCase()}ed successfully`, {variant: "success"});
                     }
                     else {
                         await execute.burnToken(
                             tokenData.address, 
-                            data.address.toString(), 
+                            data.amount.toString(), 
                             connectedWallet
-                        )
+                        );
+                        enqueueSnackbar(`Tokens ${dialogType?.toLowerCase()}ed successfully`, {variant: "success"});
                     }
                 }
             }
-            enqueueSnackbar(`Tokens ${dialogType?.toLowerCase()}ed successfully`, {variant: "success"});
             fetchData();
         }
         catch(e) {
