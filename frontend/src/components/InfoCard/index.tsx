@@ -8,7 +8,7 @@ function InfoCard() {
     return (
         <Card className="InfoCard">
             <CardContent>
-                <h2>CW20 Token Factory</h2>
+                <h2>CW20 Tokens Factory</h2>
                 <div className="InfoCardDivider"/>
                 <div>
                     <b>Create</b> a new token.<br/><br/>
